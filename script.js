@@ -3,12 +3,15 @@ function Cart() {
     const basket = [];
 
     this.addItem = function (itemName, quantity, price) {
+
+        // Object literal for new item
         const newItem = {
             "itemName": itemName,
             "quantity": quantity,
             "price": price
         }
 
+        // Conditions to check if item is already in the basket
         if (basket.length > 0) {
 
             const checkItems = (element) => {
@@ -16,9 +19,12 @@ function Cart() {
             };
 
             const itemRepeated = basket.some(checkItems);
+
             if (itemRepeated) {
                 return console.log("This item has been added previously, try updating your cart.");
-            } else {
+            }
+
+            else {
                 basket.push(newItem);
                 return console.log(basket);
             }
