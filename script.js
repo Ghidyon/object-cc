@@ -3,7 +3,7 @@ function Cart() {
     const basket = [];
 
     this.addItem = function (itemName, quantity, price) {
-        let newItem = {
+        const newItem = {
             "itemName": itemName,
             "quantity": quantity,
             "price": price
@@ -11,19 +11,22 @@ function Cart() {
 
         if (basket.length > 0) {
 
-            basket.forEach(function (element) {
-                if (itemName == element.itemName) {
-                    return console.log("operation cannot happen")
-                } else {
-                    basket.push(newItem);
-                    return console.log(basket);
-                }
-            })
+            const checkItems = (element) => {
+                return element.itemName === itemName;
+            };
+
+            const itemRepeated = basket.some(checkItems);
+            if (itemRepeated) {
+                return console.log("This item has been added previously, try updating your cart.");
+            } else {
+                basket.push(newItem);
+                return console.log(basket);
+            }
         }
 
         else {
             basket.push(newItem);
-            console.log(basket);
+            return console.log(basket);
         }
     };
 
@@ -31,13 +34,14 @@ function Cart() {
 
 const item = new Cart();
 item.addItem("mango", 5, 200);
-item.addItem("mango", 50, 70);
-item.addItem("beans", 50, 70);
+item.addItem("goman", 5, 200);
+item.addItem("mango", 5, 200);
+item.addItem("goman", 5, 200);
+item.addItem("beans", 5, 200);
+item.addItem("seand", 5, 200);
+item.addItem("beans", 5, 200);
 
 /*
 Cart.prototype.total = function () {
     return this.quantity * this.price;
-}
-console.log(firstItem.total());
-console.log(Cart)
-console.log(.addItem("mango", 5, 200)); */
+} */
