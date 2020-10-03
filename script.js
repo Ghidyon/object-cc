@@ -66,14 +66,14 @@ function Cart() {
             basket.forEach((element) => {
               
                 if (element.itemName === itemName) {
-                      let indexValue = basket.indexOf(element);
-                      let found = basket[indexValue];
+                      const indexValue = basket.indexOf(element);
+                      const found = basket[indexValue];
                       if (quantity === found.quantity) {
                             basket.splice(indexValue, 1);
                             return console.log(basket);
                       }
                       else if (quantity < found.quantity) {
-                          let newQuantity = found.quantity - quantity;
+                          const newQuantity = found.quantity - quantity;
                           found.quantity = newQuantity;
                           return console.log(basket);
                       }
@@ -86,6 +86,20 @@ function Cart() {
         
         else {
             return console.log('Cart is empty!');
+        }
+    }
+    
+    this.total = () => {
+        if (basket.length > 0) {
+            let sumOfItems = 0;
+            basket.forEach((element) => {
+                const itemTotal = element.price * element.quantity;
+                sumOfItems += itemTotal;
+            })
+            return console.log(sumOfItems);
+        } 
+        else {
+            return console.log("Cart is empty!")
         }
     }
 
@@ -101,6 +115,7 @@ item.addItem("seand", 5, 200);
 item.updateItem("beans", 'price', 500);
 item.removeItem("beans", 9);
 item.removeItem("mango", 3);
+item.total();
 
 /*
 Cart.prototype.total = function () {
