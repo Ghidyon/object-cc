@@ -1,4 +1,7 @@
-/*function Cart() {
+//Uncomment and test object constructor
+
+/*
+function Cart() {
 
     const basket = [];
     
@@ -150,9 +153,11 @@ console.log(myShop.removeItem("beans", 9));
 console.log(myShop.removeItem("mango", 3));
 console.log(myShop.total());
 console.log(myShop.checkout(7000));
-console.log(myShop.getBasket())
 */
 
+
+//Uncomment and test obj class
+/*
 class Cart {
     constructor() {
         this.basket = [];
@@ -267,9 +272,33 @@ class Cart {
     }
 }
 
-myShop = new Cart();
+class Shop extends Cart{
+    constructor() {
+      super();
+    }
+    
+    checkout(cash) {
+        if (this.total() > 0) {
+            
+            if (cash >= this.total()) {
+              return (cash - this.total());
+            }
+            else {
+              return false;
+            }
+             
+        }
+        else {
+            return 'Cart is empty.';
+        }
+    }
+}
+
+myShop = new Shop();
 console.log(myShop.addItem("mango", 5, 200));
 console.log(myShop.addItem('pear', 4, 500));
 console.log(myShop.updateItem('pear', 'quantity', 22))
 console.log(myShop.removeItem("pear", 2));
 console.log(myShop.total());
+console.log(myShop.checkout(6000));
+*/
