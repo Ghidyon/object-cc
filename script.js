@@ -5,10 +5,6 @@ function Cart() {
 
     const basket = [];
     
-    this.getBasket = () => {
-        return basket;
-    }
-    
     this.addItem = (itemName, quantity, price) => {
         // Object literal for new item
         const newItem = {
@@ -108,8 +104,8 @@ function Cart() {
         }
 
         // Conditions to check total number of items
-        if (this.getBasket().length > 0) {
-            this.getBasket().forEach(getTotal);
+        if (basket.length > 0) {
+            basket.forEach(getTotal);
             return sumOfItems;
         }
         else {
