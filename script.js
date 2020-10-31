@@ -1,5 +1,7 @@
 //Uncomment and test object constructor
 
+
+use 'strict'; // specifically use JavaScript funcs correctly
 /*
 function Cart() {
 
